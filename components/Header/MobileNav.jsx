@@ -1,73 +1,61 @@
 "use client";
 
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "../ui/button";
+import { useEffect } from "react";
+import { X, Phone } from "lucide-react";
+import { cn } from "@/lib/utils";
 import Logo from "./Logo";
-import Link from "next/link";
 import NavLinks from "./NavLinks";
+import { navLinks } from "./Header.config";
 
-const MobileNav = ({ navLinks }) => {
- const [open, setOpen] = useState(false);
+export default function MobileNav({ open, onClose }) {
+ useEffect(() => {
+  document.body.style.overflow = open ? "hidden" : "";
+  return () => { document.body.style.overflow = ""; };
+ }, [open]);
 
  return (
   <>
-   {/* Hamburger butonu */}
-   <Button
-    variant="ghost"
-    size="icon"
-    className="md:hidden"
-    aria-label="Menüyü aç"
-    onClick={() => setOpen(true)}
+   <div
+    className={cn(
+     "fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity duration-300",
+     open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+    )}
+    onClick={onClose}
+   />
+
+   <div
+    className={cn(
+     "fixed top-0 right-0 z-50 h-full w-[280px] sm:w-[320px]",
+     "bg-background border-l border-border/60 shadow-2xl",
+     "flex flex-col transition-transform duration-300 ease-out"
+    )}
+    style={{ transform: open ? "translateX(0)" : "translateX(100%)" }}
    >
-    <Menu className="h-6 w-6" />
-   </Button>
+    <div className="flex items-center justify-between px-5 h-16 border-b border-border/50">
+     <Logo />
+     <button
+      onClick={onClose}
+      className="flex items-center justify-center w-8 h-8 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+      aria-label="Menüyü kapat"
+     >
+      <X className="h-4 w-4" />
+     </button>
+    </div>
 
-   {/* Overlay + sol sidebar */}
-   {open && (
-    <div className="fixed inset-0 z-50 md:hidden">
-     {/* Karanlık arka plan */}
-     <div
-      className="absolute inset-0 bg-black/40 backdrop-blur-xs"
-      onClick={() => setOpen(false)}
-     />
+    <nav className="flex flex-col gap-1 px-3 py-4 flex-1 overflow-y-auto">
+     <p className="text-[10px] font-semibold tracking-[0.15em] uppercase text-muted-foreground/50 px-3 mb-2">
+      Sayfalar
+     </p>
+     <NavLinks links={navLinks} variant="mobile" onNavigate={onClose} />
+    </nav>
 
-     {/* Sol panel */}
-     <div className="relative h-full w-[300px] sm:w-[400px] bg-popover text-popover-foreground shadow-lg flex flex-col gap-8 mt-0">
-      <div className="flex items-center justify-between px-6 pt-6">
-       <Logo />
-       <Button
-        variant="ghost"
-        size="icon-sm"
-        aria-label="Menüyü kapat"
-        onClick={() => setOpen(false)}
-       >
-        <X className="h-4 w-4" />
-       </Button>
-      </div>
-
-      <div className="flex flex-col gap-8 px-6 pb-6 mt-4 h-full">
-       <nav className="flex flex-col gap-4">
-        <NavLinks
-         navLinks={navLinks}
-         onNavigate={() => setOpen(false)}
-         linkBaseClassName="text-lg font-medium transition-colors"
-         inactiveClassName="text-foreground hover:text-primary"
-         activeClassName="text-primary"
-        />
-       </nav>
-
-       <div className="flex flex-col gap-4 mt-auto">
-        <Button asChild className="w-full">
-         <Link href="/iletisim">Danışmanlık Al</Link>
-        </Button>
-       </div>
-      </div>
+    <div className="px-4 py-5 border-t border-border/50">
+     <div className="flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
+      <Phone className="h-3 w-3" />
+      <span>Ücretsiz ilk görüşme · Gizlilik garantisi</span>
      </div>
     </div>
-   )}
+   </div>
   </>
  );
-};
-
-export default MobileNav;
+}

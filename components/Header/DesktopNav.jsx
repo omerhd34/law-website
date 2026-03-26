@@ -1,15 +1,10 @@
 import NavLinks from "./NavLinks";
+import { navLinks } from "./Header.config";
 
-const DesktopNav = ({ navLinks }) => {
+export default function DesktopNav() {
  return (
-  <nav className="hidden md:flex items-center gap-6">
-   <NavLinks
-    navLinks={navLinks}
-    linkBaseClassName="text-sm font-medium transition-colors"
-    inactiveClassName="text-muted-foreground hover:text-primary"
-    activeClassName="text-primary"
-   />
+  <nav className="hidden lg:flex items-center gap-0.5">
+   <NavLinks links={navLinks} variant="desktop" />
   </nav>
- )
+ );
 }
-export default DesktopNav;

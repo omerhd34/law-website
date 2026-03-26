@@ -38,6 +38,7 @@
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+  --color-header: var(--header);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,22 +50,23 @@
 
 @utility container {
   margin-inline: auto;
+  width: 100%;
   padding-inline: 1rem;
 
   @variant sm {
-    padding-inline: 2rem;
+    padding-inline: 1.5rem;
   }
 
   @variant lg {
-    padding-inline: 4rem;
+    padding-inline: 2.5rem;
   }
 
   @variant xl {
-    padding-inline: 5rem;
+    padding-inline: 3rem;
   }
 
   @variant 2xl {
-    padding-inline: 6rem;
+    padding-inline: 3.5rem;
   }
 }
 
@@ -101,6 +103,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --header: oklch(0.972 0.014 95);
 }
 
 .dark {
@@ -135,6 +138,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --header: oklch(0.2 0.022 258);
 }
 
 @layer base {

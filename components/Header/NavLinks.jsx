@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { SheetClose } from "../ui/sheet";
 
 function normalizePath(pathname) {
  if (!pathname) return "/";
@@ -13,7 +12,7 @@ function normalizePath(pathname) {
 
 export default function NavLinks({
  navLinks,
- closeOnNavigate = false,
+ onNavigate,
  linkBaseClassName,
  inactiveClassName,
  activeClassName,
@@ -29,18 +28,16 @@ export default function NavLinks({
    isActive ? activeClassName : inactiveClassName
   );
 
-  const linkEl = (
-   <Link href={link.href} className={className} aria-current={isActive ? "page" : undefined}>
+  return (
+   <Link
+    key={link.href}
+    href={link.href}
+    className={className}
+    aria-current={isActive ? "page" : undefined}
+    onClick={onNavigate}
+   >
     {link.name}
    </Link>
-  );
-
-  return closeOnNavigate ? (
-   <SheetClose key={link.href} asChild>
-    {linkEl}
-   </SheetClose>
-  ) : (
-   <div key={link.href}>{linkEl}</div>
   );
  });
 }

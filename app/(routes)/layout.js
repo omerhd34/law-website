@@ -22,7 +22,9 @@ export default function RootLayout({ children }) {
    className={`${inter.variable} h-full antialiased`}
    suppressHydrationWarning
   >
-   <body className="min-h-full flex flex-col font-sans">
+   <body
+    className="min-h-full flex flex-col font-sans"
+   >
     <ThemeProvider
      attribute="class"
      storageKey="law-theme"

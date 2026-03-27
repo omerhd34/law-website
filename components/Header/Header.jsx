@@ -32,8 +32,8 @@ export default function Header() {
    >
     <div className="h-px w-full bg-linear-to-r from-transparent via-foreground/12 to-transparent" />
 
-    <div className="container mx-auto">
-     <div className="flex min-h-[68px] items-center justify-between gap-4">
+    <div className="container mx-auto min-w-0">
+     <div className="flex min-h-[68px] min-w-0 items-center justify-between gap-3 sm:gap-4">
       <Logo />
 
       <DesktopNav />

@@ -1,8 +1,6 @@
 import { Inter } from "next/font/google";
 import "../globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({
  variable: "--font-inter",
@@ -22,9 +20,7 @@ export default function RootLayout({ children }) {
    className={`${inter.variable} h-full antialiased`}
    suppressHydrationWarning
   >
-   <body
-    className="min-h-full flex flex-col font-sans"
-   >
+   <body className="flex min-h-dvh min-w-0 flex-col overflow-x-clip font-sans">
     <ThemeProvider
      attribute="class"
      storageKey="law-theme"
@@ -32,11 +28,7 @@ export default function RootLayout({ children }) {
      enableSystem={false}
      disableTransitionOnChange
     >
-     <Header />
-     <main className="flex-1">
-      <div className="container mx-auto">{children}</div>
-     </main>
-     <Footer />
+     <div className="flex min-h-dvh min-w-0 flex-1 flex-col">{children}</div>
     </ThemeProvider>
    </body>
   </html>

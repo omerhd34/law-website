@@ -27,10 +27,10 @@ export default function FooterLink({ href, children }) {
     )}
    >
     {isActive && (
-     <span className="absolute bottom-[4px] left-1/2 w-4 h-[2px] -translate-x-1/2 rounded-full bg-foreground/70" />
+     <span className="absolute bottom-[4px] left-0 w-4 h-[2px] rounded-full bg-foreground/70" />
     )}
     {!isActive && (
-     <span className="absolute bottom-[4px] left-1/2 w-4 h-[2px] -translate-x-1/2 origin-center scale-x-0 rounded-full bg-foreground/30 transition-transform duration-200 group-hover:scale-x-100" />
+     <span className="absolute bottom-[4px] left-0 w-4 h-[2px] origin-left scale-x-0 rounded-full bg-foreground/30 transition-transform duration-200 group-hover:scale-x-100" />
     )}
     <span className="relative">{children}</span>
    </Link>

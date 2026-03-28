@@ -145,10 +145,22 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    @apply font-sans overflow-x-clip;
+  }
   body {
     @apply bg-background text-foreground;
   }
-  html {
-    @apply font-sans;
+
+  .dark select option {
+    color: oklch(0.145 0 0);
+    background-color: #fff;
+  }
+}
+
+@layer components {
+  .lease-agreement-form [data-slot="label"],
+  .ihtarname-form [data-slot="label"] {
+    line-height: 1.45 !important;
   }
 }

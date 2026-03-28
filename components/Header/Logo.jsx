@@ -12,7 +12,7 @@ export default function Logo() {
     <div className="absolute inset-0 rounded-xl ring-1 ring-foreground/10" />
    </div>
    <div className="flex min-w-0 flex-col leading-none gap-[2px]">
-    <span className="truncate text-[14px] font-bold tracking-tight text-foreground transition-colors duration-200 group-hover:text-foreground/80 sm:text-[15px]">
+    <span className="truncate text-sm font-bold tracking-tight text-foreground transition-colors duration-200 group-hover:text-foreground/80">
      Adalet Hukuk
     </span>
     <span className="truncate text-[8px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-[9px] sm:tracking-[0.18em]">

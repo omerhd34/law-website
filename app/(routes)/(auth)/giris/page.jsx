@@ -5,6 +5,6 @@ export const metadata = {
  description: "Hesabınıza giriş yapın.",
 };
 
-export default function LoginPage() {
+export default function loginPage() {
  return <LoginForm />;
 }

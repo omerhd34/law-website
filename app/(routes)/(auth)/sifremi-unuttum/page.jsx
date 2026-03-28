@@ -5,6 +5,6 @@ export const metadata = {
  description: "Şifre sıfırlama bağlantısı isteyin.",
 };
 
-export default function ForgotPasswordPage() {
+export default function forgotPasswordPage() {
  return <ForgotPasswordForm />;
 }
